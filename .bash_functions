@@ -19,7 +19,12 @@ curl2() {
 	docker run --rm -t svagi/curl "$@"
 }
 
-# HTTPie with HTTP/2 support
+# HTTPie
 http() {
+	docker run --rm -t jess/httpie "$@"
+}
+
+# HTTPie with HTTP/2 support
+http2() {
 	docker run --rm -t svagi/httpie "$@"
 }

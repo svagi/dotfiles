@@ -1,0 +1,29 @@
+[core]
+	excludesfile = ~/.gitignore
+	autocrlf = input
+[color]
+	ui = true
+	diff = auto
+	status = auto
+	branch = auto
+[rerere]
+	enabled = true
+[alias]
+	s = status -s
+	c = !git clean -df && git stash clear
+	lg = log --oneline --decorate --all --graph
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[push]
+	default = simple
+[user]
+	name = svagi
+	email = jan@svager.cz
+[github]
+	user = svagi

@@ -7,7 +7,7 @@ files=(
   $HOME/.bash_options # Options
   $HOME/.bash_exports # Exports
   $HOME/.bash_aliases # Aliases
-  $HOME/.functions # Functions
+  $HOME/.bash_functions # Functions
   $HOME/.bash_prompt # Custom bash prompt
   $HOME/.bash_paths # Path modifications
   $(brew --prefix)/etc/bash_completion # Bash completion (installed via Homebrew)

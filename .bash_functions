@@ -13,3 +13,8 @@ fs() {
 		du $arg .[^.]* *
 	fi
 }
+
+# cURL with HTTP/2 support
+curl2() {
+	docker run --rm -t svagi/curl "$@"
+}

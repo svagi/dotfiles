@@ -1,4 +1,4 @@
-all: dotfiles install
+all: dotfiles
 
 # Add symlinks for dotfiles
 dotfiles:
@@ -6,6 +6,3 @@ dotfiles:
 		f=$$(basename $$file); \
 		ln -sfn $$file $(HOME)/$$f; \
 	done
-
-install:
-	source $$HOME/.bash_profile

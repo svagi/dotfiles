@@ -37,6 +37,11 @@ dclean() {
 	docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
 }
 
+# Search docker hub from browser
+dhub() {
+	open https://hub.docker.com/search/?q=$1
+}
+
 ### Container aliases
 
 # cURL with HTTP/2 support

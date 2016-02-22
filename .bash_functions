@@ -42,23 +42,45 @@ dhub() {
 	open https://hub.docker.com/search/?q=$1
 }
 
+# Docker machine environment switch
+dm() {
+	if [ $# -eq 0 ]; then
+		docker-machine ls
+	else
+		eval $(docker-machine env $1)
+	fi
+}
+
 ### Container aliases
 
 # cURL with HTTP/2 support
 curl() {
-	docker run --rm -t svagi/curl "$@"
+	local w=$(pwd)
+	docker run --rm -t \
+	-v $w:/$w:ro \
+	-w $w \
+	svagi/curl "$@"
 }
 
 # HTTPie
 http() {
-	docker run --rm -t jess/httpie "$@"
+	local w=$(pwd)
+	docker run --rm -t \
+		-v $w:/$w:ro \
+		-w $w \
+		jess/httpie "$@"
 }
 
 # HTTPie with HTTP/2 support
 http2() {
-	docker run --rm -t svagi/httpie "$@"
+	local w=$(pwd)
+	docker run --rm -t \
+		-v $w:/$w:ro \
+		-w $w \
+		svagi/httpie "$@"
 }
 
+# Python
 python() {
 	docker run --rm -it python:alpine "$@"
 }

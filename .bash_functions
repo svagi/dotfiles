@@ -84,3 +84,8 @@ http2() {
 python() {
 	docker run --rm -it python:alpine "$@"
 }
+
+# LaTex
+latex() {
+	docker run --rm -it -v $(pwd):/tmp -w /tmp svagi/latex xelatex "$@"
+}

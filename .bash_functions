@@ -89,3 +89,8 @@ python() {
 latex() {
 	docker run --rm -it -v $(pwd):/tmp -w /tmp svagi/latex xelatex "$@"
 }
+
+# Apache Benchmark
+ab() {
+	docker run --rm -t svagi/ab "$@"
+}

@@ -94,3 +94,8 @@ latex() {
 ab() {
 	docker run --rm -t svagi/ab "$@"
 }
+
+# h2load benchmark
+h2load() {
+	docker run --rm -t svagi/h2load "$@"
+}

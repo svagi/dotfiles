@@ -53,6 +53,11 @@ dm() {
 
 ### Container aliases
 
+# Alpine container for testing purpose
+alpine() {
+	docker run --rm -it alpine:latest sh
+}
+
 # cURL with HTTP/2 support
 curl() {
 	local w=$(pwd)

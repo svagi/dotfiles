@@ -24,17 +24,17 @@ dps() {
 # Delete stopped conntainers
 drm() {
 	local name=$1
-	local state=$(docker inspect --format "{{.State.Running}}" $name 2>/dev/null)
+	local state=$(docker inspect --format "{{.State.Running}}" $name)
 	if [[ "$state" == "false" ]]; then
 		docker rm $name
 	fi
 }
 
-# Delete exited conntainers & all untagged images
+# Delete exited conntainers and all dangling images and volumes
 dclean() {
-	drm
 	docker rm -v $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
 	docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
+	docker volume rm $(docker volume ls -q -f dangling=true) 2>/dev/null
 }
 
 # Search docker hub from browser
@@ -60,29 +60,17 @@ alpine() {
 
 # cURL with HTTP/2 support
 curl() {
-	local w=$(pwd)
-	docker run --rm -t \
-	-v $w:/$w:ro \
-	-w $w \
-	svagi/curl "$@"
+	docker run --rm -t -v $PWD:/$PWD:ro -w $PWD svagi/curl "$@"
 }
 
 # HTTPie
 http() {
-	local w=$(pwd)
-	docker run --rm -t \
-		-v $w:/$w:ro \
-		-w $w \
-		jess/httpie "$@"
+	docker run --rm -t -v $PWD:/$PWD:ro -w $PWD jess/httpie "$@"
 }
 
 # HTTPie with HTTP/2 support
 http2() {
-	local w=$(pwd)
-	docker run --rm -t \
-		-v $w:/$w:ro \
-		-w $w \
-		svagi/httpie "$@"
+	docker run --rm -it -v $PWD:/$PWD:ro -w $PWD svagi/httpie "$@"
 }
 
 # Python
@@ -92,7 +80,7 @@ python() {
 
 # LaTex
 latex() {
-	docker run --rm -it -v $(pwd):/tmp -w /tmp svagi/latex xelatex "$@"
+	docker run --rm -i -v $PWD:/tmp -w /tmp svagi/latex xelatex "$@"
 }
 
 # Apache Benchmark

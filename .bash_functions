@@ -70,17 +70,17 @@ alpine() {
 
 # cURL with HTTP/2 support
 curl() {
-	docker run --rm -t -v $PWD:/$PWD:ro -w $PWD svagi/curl "$@"
+	docker run --rm -t --net=host -v $PWD:/$PWD:ro -w $PWD svagi/curl "$@"
 }
 
 # HTTPie
 http() {
-	docker run --rm -t -v $PWD:/$PWD:ro -w $PWD jess/httpie "$@"
+	docker run --rm -t --net=host -v $PWD:/$PWD:ro -w $PWD jess/httpie "$@"
 }
 
 # HTTPie with HTTP/2 support
 http2() {
-	docker run --rm -it -v $PWD:/$PWD:ro -w $PWD svagi/httpie "$@"
+	docker run --rm -t --net=host -v $PWD:/$PWD:ro -w $PWD svagi/httpie "$@"
 }
 
 # Python

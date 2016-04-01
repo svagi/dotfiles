@@ -16,6 +16,25 @@ fs() {
 	fi
 }
 
+# Docker compose
+dc() {
+	docker-compose "$@"
+}
+
+# Docker machine
+dm() {
+	docker-machine "$@"
+}
+
+# Docker machine environment switch
+dme() {
+	if [ $# -eq 0 ]; then
+		eval $(docker-machine env)
+	else
+		eval $(docker-machine env $1)
+	fi
+}
+
 # List of all containers
 dps() {
 	docker ps -a
@@ -40,15 +59,6 @@ dclean() {
 # Search docker hub from browser
 dhub() {
 	open https://hub.docker.com/search/?q=$1
-}
-
-# Docker machine environment switch
-dm() {
-	if [ $# -eq 0 ]; then
-		docker-machine ls
-	else
-		eval $(docker-machine env $1)
-	fi
 }
 
 ### Container aliases

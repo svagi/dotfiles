@@ -90,7 +90,7 @@ python() {
 
 # LaTex
 latex() {
-	docker run --rm -i -v $PWD:/tmp -w /tmp svagi/latex xelatex "$@"
+	docker run --rm -i -v $PWD:/tmp -w /tmp svagi/latex-tul xelatex "$@"
 }
 
 # Apache Benchmark

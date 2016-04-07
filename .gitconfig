@@ -1,6 +1,8 @@
 [core]
 	excludesfile = ~/.gitignore
 	autocrlf = input
+[commit]
+	gpgsign = true
 [color]
 	ui = true
 	diff = auto
@@ -25,3 +27,4 @@
 [user]
 	name = svagi
 	email = jan@svager.cz
+	signingkey = D71EB183

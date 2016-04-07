@@ -102,3 +102,8 @@ ab() {
 h2load() {
 	docker run --rm -t svagi/h2load "$@"
 }
+
+# Speedtest
+speedtest() {
+	docker run --rm --net=host tianon/speedtest "$@"
+}

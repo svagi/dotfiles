@@ -103,6 +103,11 @@ h2load() {
 	docker run --rm -t svagi/h2load "$@"
 }
 
+# nghttp - HTTP/2 client
+nghttp() {
+	docker run --rm -t svagi/nghttp2 nghttp "$@"
+}
+
 # Speedtest
 speedtest() {
 	docker run --rm --net=host tianon/speedtest "$@"

@@ -56,9 +56,13 @@ dclean() {
 	docker volume rm $(docker volume ls -q -f dangling=true) 2>/dev/null
 }
 
-# Search docker hub from browser
+# Search in docker hub repository
 dhub() {
-	open https://hub.docker.com/search/?q=$1
+	if [ "$1" == "-o" ]; then
+    open "https://hub.docker.com/search/?isAutomated=0&isOfficial=0&page=1&pullCount=0&starCount=0&q=$2"
+	else
+		http -b "https://hub.docker.com/v2/search/repositories/" query=="$@"
+	fi
 }
 
 ### Container aliases

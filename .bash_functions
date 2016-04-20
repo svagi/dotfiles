@@ -126,3 +126,8 @@ nghttp() {
 speedtest() {
 	docker run --rm --net=host tianon/speedtest "$@"
 }
+
+# AWS
+aws() {
+	docker run --rm -it -v ~/.aws:/root/.aws cgswong/aws aws "$@"
+}

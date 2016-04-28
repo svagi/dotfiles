@@ -1,8 +1,6 @@
 [core]
 	excludesfile = ~/.gitignore
 	autocrlf = input
-[commit]
-	gpgsign = true
 [color]
 	ui = true
 	diff = auto
@@ -12,7 +10,8 @@
 	enabled = true
 [alias]
 	s = status -s
-	c = !git clean -df && git stash clear
+	c = commit -S
+	clear = !git clean -df && git stash clear
 	lg = log --oneline --decorate --all --graph
 [filter "hawser"]
 	clean = git hawser clean %f

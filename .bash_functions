@@ -26,6 +26,11 @@ dm() {
 	docker-machine "$@"
 }
 
+# Docker native
+dn() {
+	unset ${!DOCKER_*}
+}
+
 # Docker machine environment switch
 dme() {
 	if [ $# -eq 0 ]; then

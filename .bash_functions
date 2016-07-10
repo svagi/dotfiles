@@ -94,6 +94,16 @@ alpine() {
 	docker run --rm -it alpine:latest sh
 }
 
+# Debian container for testing purpose
+debian() {
+	docker run --rm -it debian:latest bash
+}
+
+# Ubuntu container for testing purpose
+ubuntu() {
+	docker run --rm -it debian:latest bash
+}
+
 # cURL with HTTP/2 support
 curl() {
 	docker run --rm -t --net=host -v $PWD:/$PWD:ro -w $PWD svagi/curl "$@"

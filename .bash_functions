@@ -18,9 +18,14 @@ fs() {
 
 # Swap two files
 swap() {
-	local tmpfile=$(mktemp /tmp/XXXXXX) || exit 1
-	echo "Swapping files $1 <-> $2"
-	mv -f "$1" "$tmpfile" && mv -f "$2" "$1" && mv -f "$tmpfile" "$2"
+	if [ $# -eq 2 ]; then
+		local tmpfile=$(mktemp /tmp/XXXXXX)
+		echo "Swapping files $1 <-> $2"
+		mv -f "$1" "$tmpfile" && mv -f "$2" "$1" && mv -f "$tmpfile" "$2"
+	else
+		echo "Wrong number of arguments supplied"
+		echo "Usage: swap file1 file2"
+	fi
 }
 
 # Docker compose

@@ -1,0 +1,5 @@
+# Save screenshots to the downloads.
+defaults write com.apple.screencapture location "$HOME/Downloads/"
+
+# Disable the “Are you sure you want to open this application?” dialog
+defaults write com.apple.LaunchServices LSQuarantine -bool false

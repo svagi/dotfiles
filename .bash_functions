@@ -42,22 +42,18 @@ dme() {
 
 # List of all containers
 dps() {
-	docker ps -a
+	docker ps -as
 }
 
-# Delete stopped conntainers
+# Delete exited conntainers and all dangling images
 drm() {
-	local name=$1
-	local state=$(docker inspect --format "{{.State.Running}}" $name)
-	if [[ "$state" == "false" ]]; then
-		docker rm $name
-	fi
-}
-
-# Delete exited conntainers and all dangling images and volumes
-dclean() {
 	docker rm -v $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
 	docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
+}
+
+# Delete exited conntainers, all dangling images and volumes
+dclean() {
+	drm
 	docker volume rm $(docker volume ls -q -f dangling=true) 2>/dev/null
 }
 

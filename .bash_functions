@@ -42,7 +42,7 @@ dme() {
 
 # List of all containers
 dps() {
-	docker ps -as
+	docker ps -a
 }
 
 # Delete exited conntainers and all dangling images

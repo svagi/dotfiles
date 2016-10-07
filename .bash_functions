@@ -120,12 +120,12 @@ latex() {
 
 # Apache Benchmark
 ab() {
-	docker run --rm -t svagi/ab "$@"
+	docker run --rm -t --net=host svagi/ab "$@"
 }
 
 # h2load benchmark
 h2load() {
-	docker run --rm -t svagi/h2load "$@"
+	docker run --rm -t --net=host svagi/h2load "$@"
 }
 
 # nghttp - HTTP/2 client

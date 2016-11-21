@@ -90,7 +90,7 @@ debian() {
 
 # Ubuntu container for testing purpose
 ubuntu() {
-	docker run --rm -it debian:latest bash
+	docker run --rm -it ubuntu:latest bash
 }
 
 # cURL with HTTP/2 support

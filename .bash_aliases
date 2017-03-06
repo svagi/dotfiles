@@ -16,6 +16,9 @@ alias ~="cd ~"
 # Long form no user group, color
 alias l="ls -oG"
 
+# Long form (Ubuntu)
+alias ll='ls -alF'
+
 # Order by last modified, long form no user group, color
 alias lt="ls -toG"
 

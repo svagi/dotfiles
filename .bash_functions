@@ -93,11 +93,6 @@ ubuntu() {
 	docker run --rm -it ubuntu:latest bash
 }
 
-# cURL with HTTP/2 support
-curl() {
-	docker run --rm -t --net=host -v $PWD:/$PWD:ro -w $PWD svagi/curl "$@"
-}
-
 # HTTPie
 http() {
 	docker run --rm -t --net=host -v $PWD:/$PWD:ro -w $PWD jess/httpie "$@"

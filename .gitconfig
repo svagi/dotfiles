@@ -13,6 +13,8 @@
 	c = commit -S
 	clear = !git clean -df && git stash clear
 	lg = log --oneline --decorate --all --graph
+	prune = fetch --prune
+	undo = reset --soft HEAD^
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
@@ -25,6 +27,7 @@
 	gpgsign = true
 [push]
 	default = simple
+	followTags = true
 [user]
 	name = svagi
 	email = jan@svager.cz

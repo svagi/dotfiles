@@ -103,11 +103,6 @@ http2() {
 	docker run --rm -t --net=host -v $PWD:/$PWD:ro -w $PWD svagi/httpie "$@"
 }
 
-# Python
-python() {
-	docker run --rm -it python:alpine "$@"
-}
-
 # LaTex
 latex() {
 	docker run --rm -i -v $PWD:/tmp -w /tmp svagi/latex-tul xelatex "$@"
